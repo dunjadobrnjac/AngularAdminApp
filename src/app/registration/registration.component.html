@@ -1,0 +1,42 @@
+<div class="wrapper">
+    <div class="container">
+        <div class="background">
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <form [formGroup]="registrationForm">
+            <h3>Register Here</h3>
+
+            <mat-form-field appearance="outline" class="input">
+                <mat-label>Username </mat-label>
+                <input matInput formControlName="username" placeholder="Username" [(ngModel)]="username"
+                    name="username">
+                <mat-error *ngIf="registrationForm.controls['username'].hasError('required')">
+                    Username field is required!
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="input">
+                <mat-label>Password </mat-label>
+                <input matInput formControlName="password" placeholder="Password" [(ngModel)]="password"
+                    name="password">
+                <mat-error *ngIf="registrationForm.controls['password'].hasError('required')">
+                    Password field is required!
+                </mat-error>
+                <!--<mat-error *ngIf="registrationForm.controls['password'].hasError('minlength')">
+                    Password must contains a minimum of 8 characters.
+                </mat-error>-->
+            </mat-form-field>
+            <!--
+            <label for=" username">Username</label>
+            <input class="input" type="text" placeholder="Username" id="username" name="username"
+                [(ngModel)]="username">
+
+            <label for="password">Password</label>
+            <input class="input" type="password" placeholder="Password" id="password" name="password"
+                [(ngModel)]="password">
+-->
+            <button (click)="register()">Register</button>
+        </form>
+    </div>
+</div>

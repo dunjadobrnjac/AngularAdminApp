@@ -1,0 +1,31 @@
+<div class="wrapper">
+    <div class="container">
+        <div class="background">
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <form [formGroup]="loginForm">
+            <h3>Login Here</h3>
+
+            <mat-form-field appearance="outline" class="input">
+                <mat-label>Username </mat-label>
+                <input matInput formControlName="username" placeholder="Username" [(ngModel)]="username"
+                    name="username">
+                <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
+                    Username field is required!
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="input">
+                <mat-label>Password </mat-label>
+                <input matInput formControlName="password" placeholder="Password" [(ngModel)]="password"
+                    name="password">
+                <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+                    Password field is required!
+                </mat-error>
+            </mat-form-field>
+
+            <button (click)="login()">Log In</button>
+        </form>
+    </div>
+</div>

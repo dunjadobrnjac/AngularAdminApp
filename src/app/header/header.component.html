@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="header">
+        <div class="overlay">
+            <h1>IoT Admin Application</h1>
+            <br>
+            <button routerLink={{activeLink}}>
+                {{ isLoginRoute() ? 'Registration' : isRegistrationRoute() ? 'Login' : 'Registration' }}
+            </button>
+        </div>
+    </div>
+</div>

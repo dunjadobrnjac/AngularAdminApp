@@ -1,0 +1,65 @@
+.container {
+    background-color: #24223a;
+}
+
+.header {
+    background: url('http://www.autodatz.com/wp-content/uploads/2017/05/Old-Car-Wallpapers-Hd-36-with-Old-Car-Wallpapers-Hd.jpg');
+    text-align: center;
+    width: 100%;
+    height: 270px;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0 0 85% 85% / 30%;
+}
+
+.header .overlay {
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    color: #FFF;
+    text-shadow: 1px 1px 1px #333;
+    background-image: linear-gradient(135deg, #1845ad 10%, #f09819 100%);
+
+}
+
+h1 {
+    font-size: 70px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+button {
+    width: 400px;
+    background-color: #24223a;
+    color: #ffff !important;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px #24223a solid !important;
+}
+
+button:hover {
+    background-color: #ffffff;
+    color: #080710 !important;
+}
+
+
+@media screen and (max-width: 805px) {
+    h1 {
+        font-size: 55px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+}
+
+@media screen and (max-width: 657px) {
+    h1 {
+        font-size: 40px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+}
