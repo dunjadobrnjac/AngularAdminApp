@@ -70,7 +70,8 @@
                     <ng-container matColumnDef="approval">
                         <th class="actions" mat-header-cell *matHeaderCellDef> Approval </th>
                         <td class="actions" mat-cell *matCellDef="let element">
-                            <button mat-icon-button color="primary" aria-label="Approve">
+                            <button mat-icon-button color="primary" aria-label="Approve"
+                                (click)="updateDevice(element.id, 'APPROVED')">
                                 <mat-icon>check</mat-icon>
                             </button>
                         </td>
@@ -80,7 +81,8 @@
                     <ng-container matColumnDef="delete">
                         <th mat-header-cell *matHeaderCellDef> Delete </th>
                         <td mat-cell *matCellDef="let element">
-                            <button mat-icon-button color="warn" aria-label="Delete">
+                            <button mat-icon-button color="warn" aria-label="Delete"
+                                (click)="updateDevice(element.id, 'DELETED')">
                                 <mat-icon>delete</mat-icon>
                             </button>
                         </td>

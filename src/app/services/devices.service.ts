@@ -29,4 +29,16 @@ export class DevicesService {
     const url = `${this.baseUrl}/devices/requests`;
     return this.httpClient.get(url, { headers: headers });
   }
+
+  public updateStatus(token: string, device_id: number, newStatus: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + token,
+    });
+    const payload = {
+      device_id: device_id,
+      status: newStatus
+    };
+    const url = `${this.baseUrl}/auth/update`;
+    return this.httpClient.patch<any>(url, payload, { headers: headers })
+  }
 }
