@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSortModule } from '@angular/material/sort';
 
 import { MatIconModule } from '@angular/material/icon';
 
@@ -44,6 +45,7 @@ import { DevicesComponent } from './devices/devices.component';
     MatSnackBarModule,
     MatTableModule,
     MatTabsModule,
+    MatSortModule,
   ],
   providers: [{ provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 4000 } }],
   bootstrap: [AppComponent]

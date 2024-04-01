@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { DevicesService } from '../services/devices.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { MatSort, Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface Device {
   position: number;
@@ -15,13 +18,43 @@ export interface Device {
   templateUrl: './devices.component.html',
   styleUrls: ['./devices.component.css']
 })
-export class DevicesComponent implements OnInit {
+export class DevicesComponent implements OnInit, AfterViewInit {
 
   devices: Device[] = [];
   requests: Device[] = [];
 
+  devicesSource = new MatTableDataSource(this.devices);
+  requestsSource = new MatTableDataSource(this.requests);
+
   constructor(private deviceService: DevicesService,
-    private snackbar: MatSnackBar) { }
+    private snackbar: MatSnackBar,
+    private _liveAnnouncer: LiveAnnouncer) { }
+
+  /*sorting */
+  @ViewChild(MatSort) sort!: MatSort;
+
+  ngAfterViewInit(): void {
+    this.devicesSource.sort = this.sort;
+  }
+
+  announceSortChange(sortState: Sort) {
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
+  }
+
+  /*filtering */
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.devicesSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  applyFilter2(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.requestsSource.filter = filterValue.trim().toLowerCase();
+  }
 
   ngOnInit(): void {
     const token = localStorage.getItem("userToken");
@@ -39,7 +72,8 @@ export class DevicesComponent implements OnInit {
         this.devices = response;
         this.devices.forEach((device: Device, index: number) => {
           device.position = index + 1;
-        })
+        });
+        this.devicesSource.data = this.devices;
       },
       error => {
 
@@ -51,7 +85,8 @@ export class DevicesComponent implements OnInit {
         this.requests = response;
         this.requests.forEach((device: Device, index: number) => {
           device.position = index + 1;
-        })
+        });
+        this.requestsSource.data = this.requests;
       },
       error => {
 

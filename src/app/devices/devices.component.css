@@ -27,6 +27,8 @@ th {
     color: #fff;
     text-transform: uppercase;
     border-bottom: solid 4px rgba(255, 255, 255, 0.1);
+    text-align: left !important;
+    justify-content: left;
 }
 
 td {
@@ -34,6 +36,11 @@ td {
     font-size: 14px;
     color: #fff;
     border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
 }
 
 .example-container {
@@ -44,7 +51,7 @@ td {
 }
 
 ::ng-deep .mat-mdc-tab-body.mat-mdc-tab-body-active {
-    height: 500px;
+    height: 600px;
 }
 
 .mat-column-name {
@@ -99,4 +106,12 @@ td {
 .mat-mdc-tab-nav-bar {
     --mdc-tab-indicator-active-indicator-color: #fff;
     --mat-tab-header-active-focus-indicator-color: #fff;
+}
+
+
+/*filer*/
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+    margin-top: 20px;
 }

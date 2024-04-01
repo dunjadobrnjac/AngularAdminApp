@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
   }
 
   isDevicesRoute(): boolean {
-    this.activeLink = '/logout';
+    this.activeLink = '/login';
     return this.router.url === '/devices';
   }
 
