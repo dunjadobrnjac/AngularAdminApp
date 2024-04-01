@@ -1,8 +1,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap);
 
 .wrapper {
-    /*height: 100vh;*/
-    height: 500px;
+    height: calc(100vh - 240px);
     background-color: #24223a;
     display: flex;
     justify-content: center;

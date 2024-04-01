@@ -1,6 +1,7 @@
 .container {
     background-color: #24223a;
     padding: 50px;
+    height: calc(100vh - 100px);
 }
 
 h1 {
@@ -10,6 +11,7 @@ h1 {
     font-weight: 300;
     text-align: center;
     margin-bottom: 15px;
+    margin-top: 50px;
 }
 
 .table {
@@ -35,9 +37,14 @@ td {
 }
 
 .example-container {
-    height: 400px;
+    max-height: 400px;
+    height: fit-content;
     overflow: auto;
     border: 4px solid rgba(255, 255, 255, 0.1);
+}
+
+::ng-deep .mat-mdc-tab-body.mat-mdc-tab-body-active {
+    height: 500px;
 }
 
 .mat-column-name {
@@ -54,4 +61,42 @@ td {
 
 ::-webkit-scrollbar-thumb {
     -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+.actions {
+    border-left: 4px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.mat-icon {
+    color: #24223a;
+}
+
+
+
+
+
+/*tabs*/
+::ng-deep .mat-mdc-tab-header {
+    /*background-image: linear-gradient(135deg, #1845ad 10%, #f09819 100%);*/
+    background-color: #35324d;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    width: 100% !important;
+    border-radius: 6px;
+}
+
+::ng-deep .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+    color: #ffff !important;
+    font-size: large;
+}
+
+::ng-deep .mat-mdc-tab .mdc-tab__text-label {
+    color: rgba(255, 255, 255, 0.4) !important;
+    font-size: large;
+}
+
+.mat-mdc-tab-group,
+.mat-mdc-tab-nav-bar {
+    --mdc-tab-indicator-active-indicator-color: #fff;
+    --mat-tab-header-active-focus-indicator-color: #fff;
 }

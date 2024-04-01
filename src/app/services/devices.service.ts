@@ -20,4 +20,13 @@ export class DevicesService {
     const url = `${this.baseUrl}/devices/all`;
     return this.httpClient.get(url, { headers: headers });
   }
+
+  public getRequests(token: string): Observable<any> {
+    console.log(token);
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + token,
+    });
+    const url = `${this.baseUrl}/devices/requests`;
+    return this.httpClient.get(url, { headers: headers });
+  }
 }

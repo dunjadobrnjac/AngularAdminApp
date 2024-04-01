@@ -49,6 +49,15 @@ export class RegistrationComponent implements OnInit {
                 verticalPosition: 'bottom'
               }
             )
+          } else {
+            this.snackbar.open("Oops! Something went wrong. Please try again later.", "",
+              {
+                duration: 4000,
+                horizontalPosition: 'center',
+                verticalPosition: 'bottom',
+                panelClass: ['custom-snackbar']
+              }
+            )
           }
         }
       );

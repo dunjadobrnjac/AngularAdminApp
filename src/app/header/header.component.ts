@@ -24,4 +24,9 @@ export class HeaderComponent implements OnInit {
     return this.router.url === '/registration';
   }
 
+  isDevicesRoute(): boolean {
+    this.activeLink = '/logout';
+    return this.router.url === '/devices';
+  }
+
 }
