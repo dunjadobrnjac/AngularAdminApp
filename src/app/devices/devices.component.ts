@@ -5,6 +5,8 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
+import { animate, state, style, transition, trigger } from '@angular/animations';
+
 export interface Device {
   position: number;
   id: number;
@@ -16,12 +18,23 @@ export interface Device {
 @Component({
   selector: 'app-devices',
   templateUrl: './devices.component.html',
-  styleUrls: ['./devices.component.css']
+  styleUrls: ['./devices.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed,void', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class DevicesComponent implements OnInit, AfterViewInit {
 
   devices: Device[] = [];
   requests: Device[] = [];
+
+  expandedElement!: Device | null;
+
+  selectedStatus: string = '';
 
   devicesSource = new MatTableDataSource(this.devices);
   requestsSource = new MatTableDataSource(this.requests);
@@ -56,6 +69,14 @@ export class DevicesComponent implements OnInit, AfterViewInit {
     this.requestsSource.filter = filterValue.trim().toLowerCase();
   }
 
+  changeDeviceStatus(device_id: number) {
+    console.log(device_id);
+    if (this.selectedStatus != '') {
+      console.log(this.selectedStatus);
+      this.updateDevice(device_id, this.selectedStatus)
+    }
+  }
+
   ngOnInit(): void {
     const token = localStorage.getItem("userToken");
     if (token) {
@@ -63,6 +84,8 @@ export class DevicesComponent implements OnInit, AfterViewInit {
     }
   }
   displayedColumns: string[] = ['position', 'serial_number', 'username', 'status'];
+  columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
+
   displayedColumnsRequest: string[] = ['position', 'serial_number', 'username', 'status', 'approval', 'delete'];
 
   public loadDevices(token: string) {
