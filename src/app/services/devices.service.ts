@@ -39,6 +39,6 @@ export class DevicesService {
       status: newStatus
     };
     const url = `${this.baseUrl}/auth/update`;
-    return this.httpClient.patch<any>(url, payload, { headers: headers })
+    return this.httpClient.patch<any>(url, payload, { headers: headers });
   }
 }

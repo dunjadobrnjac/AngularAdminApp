@@ -126,6 +126,7 @@ export class DevicesComponent implements OnInit, AfterViewInit {
           console.log(response);
           if (response.serial_number) {
             this.loadDevices(token);
+            this.selectedStatus = '';
           }
         },
         error => {
