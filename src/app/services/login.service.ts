@@ -9,7 +9,7 @@ export class LoginService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private url = 'http://127.0.0.1:5000/user/login';
+  private baseUrl = 'http://127.0.0.1:5000/user';
 
   public userLogin(username: string, password: string): Observable<any> {
     const headers = new HttpHeaders({
@@ -17,6 +17,16 @@ export class LoginService {
       'username': username,
       'password': password
     });
-    return this.httpClient.get(this.url, { headers: headers });
+    const url = `${this.baseUrl}/login`;
+    return this.httpClient.get(url, { headers: headers });
+  }
+
+  public userLogout(token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + token,
+    });
+
+    const url = `${this.baseUrl}/logout`;
+    return this.httpClient.get(url, { headers: headers })
   }
 }
