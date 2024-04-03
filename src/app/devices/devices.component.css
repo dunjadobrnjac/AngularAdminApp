@@ -1,7 +1,7 @@
 .container {
     background-color: #24223a;
     padding: 50px;
-    height: 100vh;
+    height: fit-content;
 }
 
 h1 {
@@ -51,7 +51,7 @@ td {
 }
 
 ::ng-deep .mat-mdc-tab-body.mat-mdc-tab-body-active {
-    height: 600px;
+    min-height: 600px;
 }
 
 .mat-column-name {
@@ -161,4 +161,11 @@ tr.example-element-row:not(.example-expanded-row):active {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+/*iframe*/
+.iframe-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
 }
